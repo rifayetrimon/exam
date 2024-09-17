@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a href="{% url 'add_contact' %}" class="bg-blue-500 text-white p-2 rounded">Add Contact</a>
+<form method="GET">
+    <input type="text" name="search" placeholder="Search contacts" class="p-2 border rounded">
+    <button type="submit" class="bg-blue-500 text-white p-2 rounded">Search</button>
+</form>
+<ul>
+    {% for contact in contacts %}
+    <li>
+        <a href="{% url 'contact_detail' contact.pk %}">{{ contact.first_name }} - {{ contact.email }} - {{ contact.phone_number }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

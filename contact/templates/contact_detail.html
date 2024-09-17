@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{{ contact.first_name }} {{ contact.last_name }}</h2>
+<p>Email: {{ contact.email }}</p>
+<p>Phone: {{ contact.phone_number }}</p>
+<p>Address: {{ contact.address }}</p>
+
+<a href="{% url 'edit_contact' contact.pk %}" class="bg-yellow-500 text-white p-2 rounded">Edit</a>
+<form method="POST" action="{% url 'delete_contact' contact.pk %}" class="inline">
+    {% csrf_token %}
+    <button type="submit" class="bg-red-500 text-white p-2 rounded">Delete</button>
+</form>
+{% endblock %}
